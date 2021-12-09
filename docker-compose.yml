@@ -1,0 +1,12 @@
+version: '2'
+services:
+  springtest:
+    image: springtest:0.0.1-SNAPSHOT
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://springtest-postgresql:5432/springtest
+    ports:
+      - "8080:8080"
+  springtest-postgresql:
+    extends:
+      file: postgresql.yml
+      service: springtest-postgresql
