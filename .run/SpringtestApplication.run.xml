@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="SpringtestApplication" type="SpringBootApplicationConfigurationType"
+    <configuration default="false" name="Complete Build" type="SpringBootApplicationConfigurationType"
                    factoryName="Spring Boot">
         <module name="springtest"/>
         <option name="SPRING_BOOT_MAIN_CLASS" value="com.gn.springtest.SpringtestApplication"/>
