@@ -6,9 +6,6 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://springtest-postgresql:5432/springtest
     ports:
       - "8080:8080"
-    depends_on:
-      springtest-postgresql:
-        condition: service_healthy
   springtest-postgresql:
     extends:
       file: postgresql.yml
