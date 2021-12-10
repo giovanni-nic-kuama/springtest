@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
   springtest:
     image: springtest:0.0.1-SNAPSHOT
@@ -6,6 +6,9 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://springtest-postgresql:5432/springtest
     ports:
       - "8080:8080"
+    depends_on:
+      springtest-postgresql:
+        condition: service_healthy
   springtest-postgresql:
     extends:
       file: postgresql.yml

@@ -32,6 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
+DB - Data
+pg-data
+
 # Frontend
 # dependencies
 /src/main/webapp/node_modules

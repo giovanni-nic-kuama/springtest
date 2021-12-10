@@ -1,10 +1,10 @@
-version: '2'
+version: '2.1'
 services:
   springtest-postgresql:
     image: postgres:12.1
     container_name: springtest-postgres
-    # volumes:
-    #     - ~/volumes/jhipster/lmp/postgresql/:/var/lib/postgresql/data/
+    volumes:
+      - ./pg-data/:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=springtest
       - POSTGRES_PASSWORD=springtest
