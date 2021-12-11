@@ -7,7 +7,7 @@ import javax.persistence.*
 open class Todo(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     open var id: Long? = null,
 
     @Column(name = "todo_message", nullable = false)
