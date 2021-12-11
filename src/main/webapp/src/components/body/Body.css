@@ -1,8 +1,16 @@
 .appBody {
   flex: 75vh;
+  margin-top: 1vh;
 }
 
-.bodyContainer {
+.indexContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  height: 65vh;
+}
+
+.placeholder {
+  height: inherit;
+  background-color: white;
+  width: 30vw;
 }
