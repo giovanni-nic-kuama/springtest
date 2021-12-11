@@ -1,0 +1,6 @@
+.headerContainer > h1 {
+  text-align: center;
+  margin: 1vh auto 1vh auto;
+  font-size: 5rem;
+  font-family: "Snell Roundhand", cursive;
+}
