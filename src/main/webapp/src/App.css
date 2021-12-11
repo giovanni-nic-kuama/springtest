@@ -1,6 +1,8 @@
 @import "components/header/Header.css";
 @import "components/footer/Footer.css";
 @import "components/body/Body.css";
+@import "components/todo-index/TodoIndex.css";
+@import "components/todo/Todo.css";
 
 * {
   margin: 0;

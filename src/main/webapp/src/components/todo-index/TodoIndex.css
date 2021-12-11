@@ -1,0 +1,36 @@
+.todoContainer {
+  background: rgb(255, 255, 255, 0.2);
+  overflow-y: scroll;
+  width: 30vw;
+  border-radius: 1rem;
+}
+
+.todosTitle {
+  position: fixed;
+  background: white;
+  width: inherit;
+  display: flex;
+  justify-content: space-between;
+  padding: 1vh 0 1vh 0;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.todosTitle > h1 {
+  margin-left: 2vw;
+}
+
+.counter {
+  background: black;
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  margin: auto 3vw
+}
+
+.todoListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3vh;
+  margin-top: 10vh;
+}
