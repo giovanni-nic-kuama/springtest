@@ -1,0 +1,8 @@
+.appBody {
+  flex: 75vh;
+}
+
+.bodyContainer {
+  display: flex;
+  justify-content: center;
+}
