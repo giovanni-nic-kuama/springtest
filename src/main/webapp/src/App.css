@@ -3,6 +3,7 @@
 @import "components/body/Body.css";
 @import "components/todo-index/TodoIndex.css";
 @import "components/todo/Todo.css";
+@import "components/todo-dialog/TodoDialog.css";
 
 * {
   margin: 0;

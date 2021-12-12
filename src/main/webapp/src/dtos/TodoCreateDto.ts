@@ -1,4 +1,6 @@
 export interface TodoCreateDto {
+  title: string,
   todoMessage: string,
-  isDone: boolean
+  inProgress: boolean,
+  isDone: boolean,
 }
