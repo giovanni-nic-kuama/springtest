@@ -5,9 +5,15 @@ import org.springframework.data.jpa.domain.Specification
 
 class ToDoSpecifications {
     companion object {
-        fun getByCompleted(isCompleted: Boolean) : Specification<Todo> {
-            return Specification<Todo> {
-                root, query, criteriaBuilder -> criteriaBuilder.equal(root.get<Todo>("isDone"), isCompleted)
+        fun completed(completed: Boolean): Specification<Todo> {
+            return Specification<Todo> { root, query, criteriaBuilder ->
+                criteriaBuilder.equal(root.get<Todo>("isDone"), completed)
+            }
+        }
+
+        fun inProgress(inProgress: Boolean): Specification<Todo> {
+            return Specification<Todo> { root, query, criteriaBuilder ->
+                criteriaBuilder.equal(root.get<Todo>("inProgress"), inProgress)
             }
         }
     }

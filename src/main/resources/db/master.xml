@@ -15,8 +15,8 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <!-- MIGRATIONS -->
-    <include file="db/changelog/migrations/sequence_generator.xml"/>
-    <include file="db/changelog/migrations/08-01-todo.xml" relativeToChangelogFile="false"/>
+    <include file="db/changelog/migrations/000-sequence-generator.xml"/>
+    <include file="db/changelog/migrations/001-todo.xml" relativeToChangelogFile="false"/>
 
     <!-- SEEDS -->
     <include file="db/changelog/seeds/08-01-todo-seed.xml" relativeToChangelogFile="false"/>
