@@ -1,36 +1,49 @@
 .todoContainer {
   background: rgb(255, 255, 255, 0.2);
   overflow-y: scroll;
-  width: 30vw;
+  width: 27vw;
   border-radius: 1rem;
+  -webkit-box-shadow: 0px 0px 12px 2px #262626;
+  box-shadow: 0px 0px 12px 2px #262626;
 }
 
 .todosTitle {
-  position: fixed;
+  font-size: 1.2vw;
+  position: absolute;
   background: white;
   width: inherit;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
   padding: 1vh 0 1vh 0;
   border-radius: 1rem 1rem 0 0;
-}
-
-.todosTitle > h1 {
-  margin-left: 2vw;
 }
 
 .counter {
   background: black;
   color: white;
+  height: 4vh;
+  width: 4vh;
   border-radius: 50%;
-  padding: 5px;
-  margin: auto 3vw
+  display: flex;
+  margin-right: 3vw;
+}
+
+.counter > h1 {
+  font-size: 3vh;
+  margin: auto;
 }
 
 .todoListContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 3vh;
-  margin-top: 10vh;
+  margin: 10vh;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  margin: 50% 0 50% 0;
 }

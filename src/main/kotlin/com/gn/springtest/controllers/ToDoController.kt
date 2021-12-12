@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@CrossOrigin(origins = ["http://localhost:3000"], maxAge = 3600)
+@CrossOrigin(origins = ["http://localhost:3000", " http://192.168.1.150:3000"], maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 class ToDoController(val todoService: TodoService) {
@@ -28,7 +28,15 @@ class ToDoController(val todoService: TodoService) {
 
     @GetMapping("/todo")
     fun getAll(pageable: Pageable): Page<TodoRUDto> {
-        val result = todoService.getAllPaginated(pageable)
+        val result = todoService.getAllByNotCompleted(pageable)
+        return result.map {
+            TodoMappings.map(it)
+        }
+    }
+
+    @GetMapping("/completedTdodo")
+    fun getAllByCompleted(pageable: Pageable): Page<TodoRUDto> {
+        val result = todoService.getAllByCompleted(pageable)
         return result.map {
             TodoMappings.map(it)
         }

@@ -1,6 +1,7 @@
 import React from "react";
 import {TodoRUDto} from "../../dtos/TodoRUDto";
 import {Todo} from "../todo/Todo";
+import CircularProgress from '@mui/material/CircularProgress';
 
 export interface TodoIndexProps {
   todos: readonly TodoRUDto[]
@@ -16,15 +17,20 @@ export function TodoIndex(props: TodoIndexProps) {
       <div className="todosTitle">
         <h1>{title}</h1>
         <div className="counter">
-          {totalTodosCount}
+          <h1>{totalTodosCount}</h1>
         </div>
       </div>
 
-      <div className="todoListContainer">
-        {todos.map(todo => (
-          <Todo todo={todo}/>
-        ))}
-      </div>
+
+      {todos.length > 0 ? (
+        <div className="todoListContainer">
+          {todos.map(todo => (<Todo todo={todo}/>))}
+        </div>
+      ) : (
+        <div className="progress">
+          <CircularProgress className="spinner"/>
+        </div>
+      )}
     </div>
   )
 }

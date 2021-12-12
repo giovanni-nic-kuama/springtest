@@ -7,10 +7,5 @@
   display: flex;
   justify-content: space-around;
   height: 65vh;
-}
-
-.placeholder {
-  height: inherit;
-  background-color: white;
-  width: 30vw;
+  margin-top: 2vh;
 }
