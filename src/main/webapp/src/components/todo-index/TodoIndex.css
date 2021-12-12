@@ -8,29 +8,34 @@
 }
 
 .todosTitle {
-  font-size: 1.2vw;
+  font-size: 0.6vw;
   position: absolute;
   background: white;
   width: inherit;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  padding: 1vh 0 1vh 0;
+  padding: .5vh 0 .5vh 0;
   border-radius: 1rem 1rem 0 0;
+  z-index: 2;
 }
 
 .counter {
-  background: black;
+  background: rgb(0, 0, 0, 0.3);
   color: white;
-  height: 4vh;
-  width: 4vh;
+  height: 3vh;
+  width: 3vh;
   border-radius: 50%;
   display: flex;
-  margin-right: 3vw;
+  margin-right: 1vw;
+}
+
+.todosTitle > h1 {
+  margin-left: 1vw;
 }
 
 .counter > h1 {
-  font-size: 3vh;
+  font-size: 2vh;
   margin: auto;
 }
 

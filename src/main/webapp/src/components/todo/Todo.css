@@ -3,8 +3,30 @@
   border: 1px solid black;
   border-radius: 0.6rem;
   width: 25vw;
-  -webkit-box-shadow: 0px 0px 4px 1px rgba(38,38,38,0.5);
-  box-shadow: 0px 0px 4px 1px rgba(38,38,38,0.5);
+  -webkit-box-shadow: 0px 0px 4px 1px rgba(38, 38, 38, 0.5);
+  box-shadow: 0px 0px 4px 1px rgba(38, 38, 38, 0.5);
+}
+
+.todoIcon {
+  margin: .3vh .7vw 0 .5vw;
+}
+
+.buttonContainer {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 1s linear;
+  display: flex;
+  justify-content: center;
+}
+
+.todo:hover {
+  background-color: rgb(0, 0, 0, 0.1);
+}
+
+.todo:hover .buttonContainer {
+  visibility: visible;
+  z-index: 0;
+  opacity: 1;
 }
 
 .todoTitle > code {
@@ -22,5 +44,5 @@
 }
 
 .todoMesageArea {
-  margin: 0 1vw 2vh 2vw;
+  margin: 0 1vw 5vh 2vw;
 }
