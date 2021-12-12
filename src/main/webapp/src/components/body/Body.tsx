@@ -8,8 +8,10 @@ import {ResponseMappings} from "../../mappings/ResponseMappings";
 import {TodoIndex} from "../todo-index/TodoIndex";
 
 function Body() {
-  const [pageStatus, setPageStatus] = useState<PageStatus>(initialPageStatus)
-  const [todoList, setTodoList] = useState<readonly TodoRUDto[]>([])
+  const [notCompletedPageStatus, setNotCompletedPageStatus] = useState<PageStatus>(initialPageStatus)
+  const [completedPageStatus, setCompletedPageStatus] = useState<PageStatus>(initialPageStatus)
+  const [notCompletedTodoList, setNotCompletedTodoList] = useState<readonly TodoRUDto[]>([])
+  const [completedTodoList, setCompletedTodoList] = useState<readonly TodoRUDto[]>([])
 
   useEffect(() => {
     async function fetchTodos() {
@@ -18,15 +20,20 @@ function Body() {
         pageNumber: 0,
         pageSize: 20
       }
-      let response = await ToDoRepository.getAll(pageRequest)
+      let notCompletedResponse = await ToDoRepository.getAllNotCompleted(pageRequest)
+      let completedResponse = await ToDoRepository.getAllCompleted(pageRequest)
 
-      if (response.status != 200) {
-        // Manage error
+      if (notCompletedResponse.status !== 200) {
+
       } else {
         setTimeout(() => {
-          setTodoList(response.data.content)
-          setPageStatus(ResponseMappings.ToPageStatus(response.data))
+          setNotCompletedTodoList(notCompletedResponse.data.content)
+          setNotCompletedPageStatus(ResponseMappings.ToPageStatus(notCompletedResponse.data))
         }, 3000);
+        setTimeout(() => {
+          setCompletedTodoList(completedResponse.data.content)
+          setCompletedPageStatus(ResponseMappings.ToPageStatus(completedResponse.data))
+        }, 1000);
       }
     }
 
@@ -35,16 +42,11 @@ function Body() {
 
   return (
     <div className="appBody">
-      {todoList.length > 0 ? (
-          <div className="indexContainer">
-            <TodoIndex todos={todoList} totalTodosCount={pageStatus.totalElements} title={"Todos"}/>
-            <TodoIndex todos={todoList} totalTodosCount={pageStatus.totalElements} title={"Completed"}/>
-          </div>
-      ) : (
-        <div>
-          <h1>Loading</h1>
-        </div>
-      )}
+      <div className="indexContainer">
+        <TodoIndex todos={notCompletedTodoList} totalTodosCount={notCompletedPageStatus.totalElements} title={"Todos"}/>
+        <TodoIndex todos={completedTodoList} totalTodosCount={completedPageStatus.totalElements} title={"In Progress"}/>
+        <TodoIndex todos={completedTodoList} totalTodosCount={completedPageStatus.totalElements} title={"Completed"}/>
+      </div>
     </div>
   )
 }

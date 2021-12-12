@@ -6,11 +6,18 @@ import {TodoCreateDto} from "../dtos/TodoCreateDto";
 
 export class ToDoRepository {
   public static readonly apiUrl = "http://localhost:8080/api/todo"
+  public static readonly completedApiUrl = "http://localhost:8080/api/completedTdodo"
 
-  static getAll(pageRequest: PageRequest) : Promise<AxiosResponse<PageResponse<TodoRUDto>>>  {
+  static getAllNotCompleted(pageRequest: PageRequest) : Promise<AxiosResponse<PageResponse<TodoRUDto>>>  {
     const query = `?paged=true&pageNumber=${pageRequest.pageNumber}&pageSize=${pageRequest.pageSize}`;
 
     return axios.get<PageResponse<TodoRUDto>>(this.apiUrl + query);
+  }
+
+  static getAllCompleted(pageRequest: PageRequest) : Promise<AxiosResponse<PageResponse<TodoRUDto>>>  {
+    const query = `?paged=true&pageNumber=${pageRequest.pageNumber}&pageSize=${pageRequest.pageSize}`;
+
+    return axios.get<PageResponse<TodoRUDto>>(this.completedApiUrl + query);
   }
 
   static getOne(id: number) : Promise<AxiosResponse<TodoRUDto>> {
