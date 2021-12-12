@@ -2,7 +2,7 @@ package com.gn.springtest.services
 
 import com.gn.springtest.domain.Todo
 import com.gn.springtest.dto.TodoCreateDto
-import com.gn.springtest.dto.TodoRUDto
+import com.gn.springtest.dto.TodoUpdateDto
 import com.gn.springtest.mappings.TodoMappings
 import com.gn.springtest.repositories.ToDoSpecifications
 import com.gn.springtest.repositories.TodoRepository
@@ -21,12 +21,19 @@ class TodoService(val todoRepository: TodoRepository) {
         return todoRepository.findAll(pageable)
     }
 
-    fun getAllByCompleted(pageable: Pageable): Page<Todo> {
-        return todoRepository.findAll(ToDoSpecifications.getByCompleted(true), pageable)
+    fun getAllCompleted(pageable: Pageable): Page<Todo> {
+        return todoRepository.findAll(ToDoSpecifications.completed(true), pageable)
     }
 
-    fun getAllByNotCompleted(pageable: Pageable): Page<Todo> {
-        return todoRepository.findAll(ToDoSpecifications.getByCompleted(false), pageable)
+    fun getAllInProgress(pageable: Pageable): Page<Todo> {
+        return todoRepository.findAll(ToDoSpecifications.inProgress(true), pageable)
+    }
+
+    fun getAllTodos(pageable: Pageable): Page<Todo> {
+        val specifications = ToDoSpecifications.completed(false)
+            .and(ToDoSpecifications.inProgress(false))
+
+        return todoRepository.findAll(specifications, pageable)
     }
 
     fun getAll(): MutableList<Todo> {
@@ -46,8 +53,7 @@ class TodoService(val todoRepository: TodoRepository) {
         return todoRepository.save(todoToCreate)
     }
 
-    fun update(todoUpdateDto: TodoRUDto): Todo {
-        val todoToUpdate: Todo = TodoMappings.map(todoUpdateDto)
-        return todoRepository.save(todoToUpdate)
+    fun update(todoUpdateDto: TodoUpdateDto, todoToUpdate: Todo): Todo {
+        return todoRepository.save(TodoMappings.map(todoUpdateDto, todoToUpdate))
     }
 }

@@ -6,22 +6,115 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
 
     <changeSet author="gn" id="08-01-todo-seed">
+        <!-- Todos Seed -->
         <insert schemaName="public" tableName="todo">
             <column name="id" valueNumeric="1"/>
+            <column name="title" value="Todo message #1"/>
             <column name="todo_message" value="Todo message #1"/>
-            <column name="is_done" valueBoolean="1"/>
+            <column name="in_progress" valueBoolean="false"/>
+            <column name="is_done" valueBoolean="false"/>
+            <column name="create_date" value="${now}"/>
         </insert>
 
         <insert schemaName="public" tableName="todo">
             <column name="id" valueNumeric="2"/>
+            <column name="title" value="Todo message #2"/>
             <column name="todo_message" value="Todo message #2"/>
-            <column name="is_done" valueBoolean="1"/>
+            <column name="in_progress" valueBoolean="false"/>
+            <column name="is_done" valueBoolean="false"/>
+            <column name="create_date" value="${now}"/>
         </insert>
 
         <insert schemaName="public" tableName="todo">
             <column name="id" valueNumeric="3"/>
+            <column name="title" value="Todo message #3"/>
             <column name="todo_message" value="Todo message #3"/>
-            <column name="is_done" valueBoolean="1"/>
+            <column name="in_progress" valueBoolean="false"/>
+            <column name="is_done" valueBoolean="false"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="4"/>
+            <column name="title" value="Todo message #4"/>
+            <column name="todo_message" value="Todo message #4"/>
+            <column name="in_progress" valueBoolean="false"/>
+            <column name="is_done" valueBoolean="false"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <!-- In Progress seed -->
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="5"/>
+            <column name="title" value="Todo message #5"/>
+            <column name="todo_message" value="Todo message #5"/>
+            <column name="in_progress" valueBoolean="true"/>
+            <column name="is_done" valueBoolean="false"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="6"/>
+            <column name="title" value="Todo message #6"/>
+            <column name="todo_message" value="Todo message #6"/>
+            <column name="in_progress" valueBoolean="true"/>
+            <column name="is_done" valueBoolean="false"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="7"/>
+            <column name="title" value="Todo message #7"/>
+            <column name="todo_message" value="Todo message #7"/>
+            <column name="in_progress" valueBoolean="true"/>
+            <column name="is_done" valueBoolean="false"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="8"/>
+            <column name="title" value="Todo message #8"/>
+            <column name="todo_message" value="Todo message #8"/>
+            <column name="in_progress" valueBoolean="true"/>
+            <column name="is_done" valueBoolean="false"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <!-- Completed Seed -->
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="9"/>
+            <column name="title" value="Todo message #9"/>
+            <column name="todo_message" value="Todo message #9"/>
+            <column name="in_progress" valueBoolean="false"/>
+            <column name="is_done" valueBoolean="true"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="10"/>
+            <column name="title" value="Todo message #10"/>
+            <column name="todo_message" value="Todo message #10"/>
+            <column name="in_progress" valueBoolean="false"/>
+            <column name="is_done" valueBoolean="true"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="11"/>
+            <column name="title" value="Todo message #11"/>
+            <column name="todo_message" value="Todo message #11"/>
+            <column name="in_progress" valueBoolean="false"/>
+            <column name="is_done" valueBoolean="true"/>
+            <column name="create_date" value="${now}"/>
+        </insert>
+
+        <insert schemaName="public" tableName="todo">
+            <column name="id" valueNumeric="12"/>
+            <column name="title" value="Todo message #12"/>
+            <column name="todo_message" value="Todo message #12"/>
+            <column name="in_progress" valueBoolean="false"/>
+            <column name="is_done" valueBoolean="true"/>
+            <column name="create_date" value="${now}"/>
         </insert>
 
     </changeSet>

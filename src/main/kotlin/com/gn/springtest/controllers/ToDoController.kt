@@ -1,7 +1,8 @@
 package com.gn.springtest.controllers
 
 import com.gn.springtest.dto.TodoCreateDto
-import com.gn.springtest.dto.TodoRUDto
+import com.gn.springtest.dto.TodoReadDto
+import com.gn.springtest.dto.TodoUpdateDto
 import com.gn.springtest.mappings.TodoMappings
 import com.gn.springtest.services.TodoService
 import org.springframework.data.domain.Page
@@ -13,48 +14,50 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api")
 class ToDoController(val todoService: TodoService) {
-
-
     @GetMapping("/todo/{id}")
-    fun getOne(@PathVariable id: Long): ResponseEntity<TodoRUDto> {
+    fun getOne(@PathVariable id: Long): ResponseEntity<TodoReadDto> {
         val todo = todoService.getOneById(id)
 
-        todo?.let {
-            return ResponseEntity.ok(TodoMappings.map(it))
-        }
+        todo?.let { return ResponseEntity.ok(TodoMappings.map(it)) }
 
         return ResponseEntity.notFound().build()
     }
 
     @GetMapping("/todo")
-    fun getAll(pageable: Pageable): Page<TodoRUDto> {
-        val result = todoService.getAllByNotCompleted(pageable)
+    fun getAllTodos(pageable: Pageable): Page<TodoReadDto> {
+        val result = todoService.getAllTodos(pageable)
         return result.map {
             TodoMappings.map(it)
         }
     }
 
-    @GetMapping("/completedTdodo")
-    fun getAllByCompleted(pageable: Pageable): Page<TodoRUDto> {
-        val result = todoService.getAllByCompleted(pageable)
+    @GetMapping("/todo/completed")
+    fun getAllCompleted(pageable: Pageable): Page<TodoReadDto> {
+        val result = todoService.getAllCompleted(pageable)
+        return result.map {
+            TodoMappings.map(it)
+        }
+    }
+
+    @GetMapping("/todo/inProgress")
+    fun getAllInProgress(pageable: Pageable): Page<TodoReadDto> {
+        val result = todoService.getAllInProgress(pageable)
         return result.map {
             TodoMappings.map(it)
         }
     }
 
     @PutMapping("todo")
-    fun update(@RequestBody todoRUDto: TodoRUDto): ResponseEntity<TodoRUDto> {
-        val todo = todoService.getOneById(todoRUDto.id)
+    fun update(@RequestBody todoUpdateDto: TodoUpdateDto): ResponseEntity<TodoReadDto> {
+        val todo = todoService.getOneById(todoUpdateDto.id)
 
-        todo?.let {
-            return ResponseEntity.ok(TodoMappings.map(todoService.update(todoRUDto)))
-        }
+        todo?.let { return ResponseEntity.ok(TodoMappings.map(todoService.update(todoUpdateDto, todo))) }
 
         return ResponseEntity.notFound().build()
     }
 
     @PostMapping("todo")
-    fun create(@RequestBody todoCreateDto: TodoCreateDto): TodoRUDto {
+    fun create(@RequestBody todoCreateDto: TodoCreateDto): TodoReadDto {
         return TodoMappings.map(todoService.create(todoCreateDto))
     }
 
@@ -69,5 +72,4 @@ class ToDoController(val todoService: TodoService) {
 
         return ResponseEntity.notFound().build()
     }
-
 }

@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
 
     <changeSet id="sequence_generator" author="gn">
-        <createSequence sequenceName="hibernate_sequence" startValue="4" incrementBy="1"/>
+        <createSequence sequenceName="hibernate_sequence" startValue="13" incrementBy="1"/>
     </changeSet>
 
 </databaseChangeLog>
