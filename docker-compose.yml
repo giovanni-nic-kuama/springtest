@@ -2,8 +2,11 @@ version: '2.1'
 services:
   springtest:
     image: springtest:0.0.1-SNAPSHOT
+    entrypoint: /entrypoint.sh
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://springtest-postgresql:5432/springtest
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://springtest-postgresql/springtest
+      - SPRING_DATASOURCE_USERNAME=springtest
+      - SPRING_DATASOURCE_PASSWORD=springtest
     ports:
       - "8080:8080"
   springtest-postgresql:
