@@ -125,7 +125,11 @@
                                 <image>springtest</image>
                             </to>
                             <container>
-                                <entrypoint>/entrypoint.sh</entrypoint>
+                                <entrypoint>
+                                    <shell>sh</shell>
+                                    <option>-c</option>
+                                    <arg>/entrypoint.sh</arg>
+                                </entrypoint>
                                 <ports>
                                     <port>8080</port>
                                 </ports>
@@ -141,7 +145,7 @@
                                     <mode>755</mode>
                                   </permission>
                                 </permissions>
-                              </extraDirectories>
+                              </extraDirectories>                              
                         </configuration>
                         <phase>package</phase>
                     </execution>
